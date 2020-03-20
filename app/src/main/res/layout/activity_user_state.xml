@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="doctors"
             type="com.ismailhakkiaydin.doctorsapi.model.Doctors" />
@@ -37,7 +38,8 @@
                     android:layout_width="83.62dp"
                     android:layout_height="83.62dp"
                     android:layout_gravity="center"
-                    app:profileImage="@{doctors.ımage.url}" />
+                    app:profileImage="@{doctors.image.url}"
+                    />
 
                 <TextView
                     android:id="@+id/tv_state_name"
@@ -54,7 +56,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:fontFamily="@font/quicksand"
-                    android:text="@{doctors.userStatus}"
+                    app:loadState="@{doctors.userStatus}"
                     android:textColor="@color/colorDetayUyelik" />
 
             </LinearLayout>

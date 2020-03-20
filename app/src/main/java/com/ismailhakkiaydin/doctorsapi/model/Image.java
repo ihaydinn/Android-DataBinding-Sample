@@ -1,5 +1,7 @@
 package com.ismailhakkiaydin.doctorsapi.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.widget.ImageView;
 
 import androidx.databinding.BindingAdapter;
@@ -8,7 +10,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.google.gson.annotations.SerializedName;
 
-public class Image {
+public class Image implements Parcelable {
 
     @SerializedName("url")
     private String url;
@@ -23,4 +25,34 @@ public class Image {
                 .load(imageUrl).apply(new RequestOptions().circleCrop())
                 .into(view);
     }
+
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(this.url);
+    }
+
+    public Image() {
+    }
+
+    protected Image(Parcel in) {
+        this.url = in.readString();
+    }
+
+    public static final Parcelable.Creator<Image> CREATOR = new Parcelable.Creator<Image>() {
+        @Override
+        public Image createFromParcel(Parcel source) {
+            return new Image(source);
+        }
+
+        @Override
+        public Image[] newArray(int size) {
+            return new Image[size];
+        }
+    };
 }

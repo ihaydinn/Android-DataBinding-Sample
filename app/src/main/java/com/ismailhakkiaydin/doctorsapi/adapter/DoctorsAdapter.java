@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.ismailhakkiaydin.doctorsapi.R;
 import com.ismailhakkiaydin.doctorsapi.activity.MainActivity;
 import com.ismailhakkiaydin.doctorsapi.activity.UserStateActivity;
@@ -31,7 +32,7 @@ public class DoctorsAdapter extends RecyclerView.Adapter<DoctorsAdapter.DoctorsV
     }
 
     @Override
-    public DoctorsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public DoctorsViewHolder onCreateViewHolder(@NonNull final ViewGroup parent, int viewType) {
         ListItemBinding mListItemBinding = DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()), R.layout.list_item, parent, false);
         final DoctorsViewHolder doctorsViewHolder = new DoctorsViewHolder(mListItemBinding);
 

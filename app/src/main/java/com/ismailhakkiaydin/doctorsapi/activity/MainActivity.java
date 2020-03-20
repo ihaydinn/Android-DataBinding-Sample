@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
 
     private DoctorsViewModel mDoctorsViewModel;
     private DoctorsAdapter mDoctorsAdapter;
-   // private List<Doctors> mDoctorsList;
+    // private List<Doctors> mDoctorsList;
 
 
     @Override
@@ -43,8 +43,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(Doctors doctors, int position) {
 
+
                 Intent intent = new Intent(getApplicationContext(), UserStateActivity.class);
+                intent.putExtra("name", doctors);
                 startActivity(intent);
+
 
                 Toast.makeText(MainActivity.this, "position : " + position, Toast.LENGTH_SHORT).show();
 
@@ -59,7 +62,6 @@ public class MainActivity extends AppCompatActivity {
                 mDoctorsAdapter.setDoctorsList(doctors);
             }
         });
-
 
 
     }

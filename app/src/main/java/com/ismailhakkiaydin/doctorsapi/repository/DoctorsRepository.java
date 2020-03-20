@@ -1,6 +1,5 @@
 package com.ismailhakkiaydin.doctorsapi.repository;
 
-import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.ismailhakkiaydin.doctorsapi.api.ApiClient;
@@ -45,7 +44,5 @@ public class DoctorsRepository {
         });
         return mutableLiveData;
     }
-
-
 
 }

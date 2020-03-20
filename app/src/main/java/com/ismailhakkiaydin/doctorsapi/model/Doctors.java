@@ -2,7 +2,9 @@ package com.ismailhakkiaydin.doctorsapi.model;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.databinding.BindingAdapter;
 
@@ -25,7 +27,22 @@ public class Doctors implements Parcelable {
     @SerializedName("image")
     private Image image;
 
-    public Doctors(){}
+
+    @BindingAdapter("app:loadState")
+    public static void loadState(TextView view, CharSequence text) {
+        if (text.equals("premium")){
+            view.setText("Premium");
+
+            view.setVisibility(View.VISIBLE);
+        }else {
+            view.setVisibility(View.GONE);
+        }
+
+    }
+
+
+    public Doctors() {
+    }
 
     public String getFullName() {
         return fullName;
@@ -43,9 +60,25 @@ public class Doctors implements Parcelable {
         return gender;
     }
 
-    protected Doctors(Parcel in){
-        fullName = in.readString();
-        userStatus = in.readString();
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(this.fullName);
+        dest.writeString(this.userStatus);
+        dest.writeString(this.gender);
+        dest.writeParcelable((Parcelable) this.image, flags);
+    }
+
+    protected Doctors(Parcel in) {
+        this.fullName = in.readString();
+        this.userStatus = in.readString();
+        this.gender = in.readString();
+        this.image = in.readParcelable(Image.class.getClassLoader());
     }
 
     public static final Creator<Doctors> CREATOR = new Creator<Doctors>() {
@@ -59,17 +92,4 @@ public class Doctors implements Parcelable {
             return new Doctors[size];
         }
     };
-
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(fullName);
-        dest.writeString(userStatus);
-
-    }
 }
