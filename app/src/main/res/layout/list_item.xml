@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="doctors"
+            type="com.ismailhakkiaydin.doctorsapi.model.Doctors" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/img_user"
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            android:layout_marginLeft="@dimen/margin_rw_img_left"
+            android:layout_marginTop="@dimen/margin_rw_img_left"
+            android:layout_marginBottom="15dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:profileImage="@{doctors.image.url}" />
+
+        <TextView
+            android:id="@+id/txt_user"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginStart="15dp"
+            android:fontFamily="@font/quicksand"
+            android:gravity="center"
+            android:text="@{doctors.fullName}"
+            android:textColor="@color/colorItemName"
+            app:layout_constraintBottom_toBottomOf="@+id/img_user"
+            app:layout_constraintStart_toEndOf="@+id/img_user"
+            app:layout_constraintTop_toTopOf="@+id/img_user" />
+
+        <ImageView
+            android:id="@+id/img_list_arrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|center"
+            android:layout_marginEnd="15dp"
+            android:src="@drawable/ic_arrow_right"
+            app:layout_constraintBottom_toBottomOf="@+id/img_user"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/img_user" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
+
+

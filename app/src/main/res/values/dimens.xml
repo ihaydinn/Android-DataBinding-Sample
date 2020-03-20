@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="background_margin">25dp</dimen>
+
+    <dimen name="margin_top">25dp</dimen>
+    <dimen name="margin_bottom">25dp</dimen>
+
+    <dimen name="margin_cb_left">14.59dp</dimen>
+    <dimen name="margin_cb_top">15dp</dimen>
+    <dimen name="margin_cb_bottom">14dp</dimen>
+    <dimen name="margin_two_cb">67dp</dimen>
+
+    <dimen name="margin_rw_img_left">15dp</dimen>
+    <dimen name="margin_rw_img_right">15dp</dimen>
+    <dimen name="margin_rw_right">15dp</dimen>
+
+
+</resources>

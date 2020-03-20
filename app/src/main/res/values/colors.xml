@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#1C8E5D</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+
+    <color name="colorMainLayout">#F4F4F4</color>
+    <color name="colorSearchView">#FFFFFF</color>
+    <color name="colorLinearLayout">#FFFFFF</color>
+    <color name="colorRecyclerViewLayout">#FFFFFF</color>
+
+    <color name="colorCheckBox">#AEAEB4</color>
+    <color name="colorCheckBoxText">#AEAEB4</color>
+
+    <color name="colorItemName">#6A6A77</color>
+    <color name="colorItemIcon">#AEAEB4</color>
+
+    <color name="colorDetayName">#6A6A77</color>
+    <color name="colorDetayUyelik">#FEAC02</color>
+
+    <color name="colorRandevuAl">#1C8E5D</color>
+    <color name="colorPremiumPaket">#1C8E5D</color>
+
+</resources>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorMainLayout"
+        android:padding="@dimen/background_margin"
+        tools:context="com.ismailhakkiaydin.doctorsapi.activity.MainActivity">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <SearchView
+                android:id="@+id/searchView"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/search_view"
+                android:elevation="1dp"
+                android:queryHint="Klinik ara.."
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <LinearLayout
+                android:id="@+id/linearLayout2"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="@dimen/margin_top"
+                android:background="@drawable/linear_layout"
+                android:elevation="1dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/searchView">
+
+
+                <androidx.appcompat.widget.AppCompatCheckBox
+                    android:id="@+id/cbKadin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_cb_left"
+                    android:layout_marginTop="@dimen/margin_cb_top"
+                    android:layout_marginBottom="@dimen/margin_cb_bottom"
+                    android:onClick="cbOnClick"
+                    android:buttonTint="@color/colorCheckBox"
+                    android:fontFamily="@font/quicksand"
+                    android:text="Kadın"
+                    android:textColor="@color/colorCheckBoxText" />
+
+                <androidx.appcompat.widget.AppCompatCheckBox
+                    android:id="@+id/cbErkek"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_two_cb"
+                    android:layout_marginTop="@dimen/margin_cb_top"
+                    android:layout_marginBottom="@dimen/margin_cb_bottom"
+                    android:onClick="cbOnClick"
+                    android:buttonTint="@color/colorCheckBox"
+                    android:fontFamily="@font/quicksand"
+                    android:text="Erkek"
+                    android:textColor="@color/colorCheckBoxText" />
+
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:background="@drawable/recyclerview_layout"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+                tools:listitem="@layout/list_item" />
+
+
+
+        </LinearLayout>
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
