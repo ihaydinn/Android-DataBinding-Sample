@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+<layout>
 
     <data>
 
         <variable
-            name="doctors"
+            name="doctor"
             type="com.ismailhakkiaydin.doctorsapi.model.Doctors" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/constrainLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -38,7 +38,7 @@
                     android:layout_width="83.62dp"
                     android:layout_height="83.62dp"
                     android:layout_gravity="center"
-                    app:profileImage="@{doctors.image.url}"
+                    app:profileImage="@{doctor.image.url}"
                     />
 
                 <TextView
@@ -47,7 +47,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="5dp"
-                    android:text="@{doctors.fullName}"
+                    android:text="@{doctor.fullName}"
                     android:textColor="@color/colorPremiumPaket" />
 
                 <TextView
@@ -56,7 +56,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:fontFamily="@font/quicksand"
-                    app:loadState="@{doctors.userStatus}"
+                    app:loadState="@{doctor.userStatus}"
                     android:textColor="@color/colorDetayUyelik" />
 
             </LinearLayout>

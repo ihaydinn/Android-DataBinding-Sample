@@ -43,13 +43,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(Doctors doctors, int position) {
 
-
                 Intent intent = new Intent(getApplicationContext(), UserStateActivity.class);
-                intent.putExtra("name", doctors);
+                intent.putExtra("doctors_info", doctors);
                 startActivity(intent);
-
-
-                Toast.makeText(MainActivity.this, "position : " + position, Toast.LENGTH_SHORT).show();
 
             }
         });
