@@ -2,11 +2,14 @@ package com.ismailhakkiaydin.doctorsapi.model;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.appcompat.widget.SearchView;
 import androidx.databinding.BindingAdapter;
+import androidx.databinding.adapters.SearchViewBindingAdapter;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
@@ -28,13 +31,13 @@ public class Doctors implements Parcelable {
     private Image image;
 
 
-    @BindingAdapter("app:loadState")
+    @BindingAdapter("loadState")
     public static void loadState(TextView view, CharSequence text) {
-        if (text.equals("premium")){
+        if (text.equals("premium")) {
             view.setText("Premium");
 
             view.setVisibility(View.VISIBLE);
-        }else {
+        } else {
             view.setVisibility(View.GONE);
         }
 

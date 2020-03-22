@@ -3,7 +3,6 @@ package com.ismailhakkiaydin.doctorsapi.activity;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -17,7 +16,8 @@ import com.ismailhakkiaydin.doctorsapi.viewmodel.DoctorsViewModel;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Toast;
+import android.text.TextUtils;
+import android.widget.SearchView;
 
 import java.util.List;
 
@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
 
     private DoctorsViewModel mDoctorsViewModel;
     private DoctorsAdapter mDoctorsAdapter;
-    // private List<Doctors> mDoctorsList;
+     private List<Doctors> mDoctorsList;
 
 
     @Override
@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerView.setHasFixedSize(true);
         mDoctorsViewModel = ViewModelProviders.of(this).get(DoctorsViewModel.class);
-        mDoctorsAdapter = new DoctorsAdapter(this, new ItemClickListener() {
+        mDoctorsAdapter = new DoctorsAdapter(this, mDoctorsList, new ItemClickListener() {
             @Override
             public void onItemClick(Doctors doctors, int position) {
 
@@ -56,6 +56,24 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onChanged(List<Doctors> doctors) {
                 mDoctorsAdapter.setDoctorsList(doctors);
+            }
+        });
+
+
+
+        activityMainBinding.searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                mDoctorsAdapter.getFilter().filter(query);
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                if (!TextUtils.isEmpty(newText)){
+                    mDoctorsAdapter.getFilter().filter("");
+                }
+                return false;
             }
         });
 

@@ -2,9 +2,12 @@ package com.ismailhakkiaydin.doctorsapi.model;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.text.TextUtils;
 import android.widget.ImageView;
 
+import androidx.appcompat.widget.SearchView;
 import androidx.databinding.BindingAdapter;
+import androidx.databinding.adapters.SearchViewBindingAdapter;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
@@ -25,6 +28,7 @@ public class Image implements Parcelable {
                 .load(imageUrl).apply(new RequestOptions().circleCrop())
                 .into(view);
     }
+
 
 
     @Override
