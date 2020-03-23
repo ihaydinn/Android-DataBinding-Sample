@@ -2,10 +2,11 @@ package com.ismailhakkiaydin.doctorsapi.repository;
 
 import androidx.lifecycle.MutableLiveData;
 
-import com.ismailhakkiaydin.doctorsapi.api.ApiClient;
-import com.ismailhakkiaydin.doctorsapi.api.ApiService;
-import com.ismailhakkiaydin.doctorsapi.model.Doctors;
-import com.ismailhakkiaydin.doctorsapi.model.DoctorsResult;
+import com.ismailhakkiaydin.doctorsapi.ui.main.adapter.DoctorsAdapter;
+import com.ismailhakkiaydin.doctorsapi.network.client.ApiClient;
+import com.ismailhakkiaydin.doctorsapi.network.client.ApiService;
+import com.ismailhakkiaydin.doctorsapi.network.dto.Doctors;
+import com.ismailhakkiaydin.doctorsapi.network.dto.DoctorsResult;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,6 +20,7 @@ public class DoctorsRepository {
     private ApiService mApiService;
     private List<Doctors> mDoctorsList = new ArrayList<>();
     private MutableLiveData<List<Doctors>> mutableLiveData = new MutableLiveData<>();
+    private DoctorsAdapter doctorsAdapter;
 
     public DoctorsRepository() {
     }

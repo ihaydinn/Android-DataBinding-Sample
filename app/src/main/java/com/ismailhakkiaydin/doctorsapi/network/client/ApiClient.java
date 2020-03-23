@@ -1,4 +1,4 @@
-package com.ismailhakkiaydin.doctorsapi.api;
+package com.ismailhakkiaydin.doctorsapi.network.client;
 
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;

@@ -1,6 +1,6 @@
-package com.ismailhakkiaydin.doctorsapi.api;
+package com.ismailhakkiaydin.doctorsapi.network.client;
 
-import com.ismailhakkiaydin.doctorsapi.model.DoctorsResult;
+import com.ismailhakkiaydin.doctorsapi.network.dto.DoctorsResult;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

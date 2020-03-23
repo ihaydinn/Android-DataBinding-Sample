@@ -5,7 +5,7 @@
 
         <variable
             name="doctor"
-            type="com.ismailhakkiaydin.doctorsapi.model.Doctors" />
+            type="com.ismailhakkiaydin.doctorsapi.network.dto.Doctors" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout  xmlns:android="http://schemas.android.com/apk/res/android"
@@ -15,7 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="@dimen/background_margin"
-        tools:context="com.ismailhakkiaydin.doctorsapi.activity.UserStateActivity">
+        tools:context="com.ismailhakkiaydin.doctorsapi.ui.user_state.UserStateActivity">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cardView"
@@ -71,6 +71,7 @@
             android:layout_marginTop="25dp"
             android:background="@drawable/search_view"
             android:onClick="clickRandveuPaket"
+            app:showCardButtonRandevu="@{doctor.userStatus}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cardView">
@@ -112,6 +113,7 @@
             android:layout_marginTop="25dp"
             android:background="@drawable/search_view"
             android:onClick="clickRandveuPaket"
+            app:showCardButtonPaket="@{doctor.userStatus}"
             android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

@@ -1,18 +1,13 @@
-package com.ismailhakkiaydin.doctorsapi.model;
+package com.ismailhakkiaydin.doctorsapi.network.dto;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.text.TextUtils;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.appcompat.widget.SearchView;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.databinding.BindingAdapter;
-import androidx.databinding.adapters.SearchViewBindingAdapter;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.RequestOptions;
 import com.google.gson.annotations.SerializedName;
 
 
@@ -39,6 +34,26 @@ public class Doctors implements Parcelable {
             view.setVisibility(View.VISIBLE);
         } else {
             view.setVisibility(View.GONE);
+        }
+
+    }
+
+    @BindingAdapter("showCardButtonPaket")
+    public static void showCardButtonPaket(ConstraintLayout layout, CharSequence text) {
+        if (text.equals("free")) {
+            layout.setVisibility(View.VISIBLE);
+        } else {
+            layout.setVisibility(View.GONE);
+        }
+
+    }
+
+    @BindingAdapter("showCardButtonRandevu")
+    public static void showCardButtonRandevu(ConstraintLayout layout, CharSequence text) {
+        if (text.equals("premium")) {
+            layout.setVisibility(View.VISIBLE);
+        } else {
+            layout.setVisibility(View.GONE);
         }
 
     }

@@ -1,4 +1,4 @@
-package com.ismailhakkiaydin.doctorsapi.model;
+package com.ismailhakkiaydin.doctorsapi.network.dto;
 
 import com.google.gson.annotations.SerializedName;
 

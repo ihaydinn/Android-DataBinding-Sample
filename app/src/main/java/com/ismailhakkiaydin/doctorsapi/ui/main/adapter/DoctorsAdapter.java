@@ -1,4 +1,4 @@
-package com.ismailhakkiaydin.doctorsapi.adapter;
+package com.ismailhakkiaydin.doctorsapi.ui.main.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,13 +8,12 @@ import android.widget.Filter;
 import android.widget.Filterable;
 
 import androidx.annotation.NonNull;
-import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.ismailhakkiaydin.doctorsapi.R;
-
+import com.ismailhakkiaydin.doctorsapi.util.ItemClickListener;
+import com.ismailhakkiaydin.doctorsapi.ui.main.MainActivity;
 import com.ismailhakkiaydin.doctorsapi.databinding.ListItemBinding;
-import com.ismailhakkiaydin.doctorsapi.model.Doctors;
+import com.ismailhakkiaydin.doctorsapi.network.dto.Doctors;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +25,8 @@ public class DoctorsAdapter extends RecyclerView.Adapter<DoctorsAdapter.DoctorsV
     private List<Doctors> tempDoctorsList;
     private ItemClickListener mItemClickListener;
 
+    public static boolean IS_USER_NOT_FOUND_VISIBLE;
+
 
     public DoctorsAdapter(Context mContext, List<Doctors> doctorsList, ItemClickListener mItemClickListener) {
         this.mContext = mContext;
@@ -36,7 +37,7 @@ public class DoctorsAdapter extends RecyclerView.Adapter<DoctorsAdapter.DoctorsV
 
     @Override
     public DoctorsViewHolder onCreateViewHolder(@NonNull final ViewGroup parent, int viewType) {
-        ListItemBinding mListItemBinding = DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()), R.layout.list_item, parent, false);
+        ListItemBinding mListItemBinding = ListItemBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
         final DoctorsViewHolder doctorsViewHolder = new DoctorsViewHolder(mListItemBinding);
 
         mListItemBinding.getRoot().setOnClickListener(new View.OnClickListener() {
@@ -52,15 +53,16 @@ public class DoctorsAdapter extends RecyclerView.Adapter<DoctorsAdapter.DoctorsV
 
     @Override
     public void onBindViewHolder(@NonNull DoctorsViewHolder holder, int position) {
-        Doctors doctors = doctorsList.get(position);
+        Doctors doctors = tempDoctorsList.get(position);
         holder.mListItemBinding.setDoctors(doctors);
+        holder.mListItemBinding.executePendingBindings();
 
     }
 
     @Override
     public int getItemCount() {
-        if (doctorsList != null) {
-            return doctorsList.size();
+        if (tempDoctorsList != null) {
+            return tempDoctorsList.size();
         } else {
             return 0;
         }
@@ -68,13 +70,14 @@ public class DoctorsAdapter extends RecyclerView.Adapter<DoctorsAdapter.DoctorsV
 
     public void setDoctorsList(List<Doctors> doctors) {
         this.doctorsList = doctors;
+        this.tempDoctorsList = doctors;
         notifyDataSetChanged();
     }
 
     @Override
     public Filter getFilter() {
 
-        Filter filter = new Filter() {
+        return new Filter() {
 
             FilterResults filterResults;
 
@@ -83,26 +86,47 @@ public class DoctorsAdapter extends RecyclerView.Adapter<DoctorsAdapter.DoctorsV
 
 
                 String searchString = charSequence.toString();
-                if (searchString.isEmpty() || searchString.length() == 0) {
-                  //  IS_USER_NOT_FOUND_VISIBLE = false;
-                    tempDoctorsList = doctorsList;
-                } else {
+
+                if (MainActivity.CB_GENDER) {
                     List<Doctors> filteredList = new ArrayList<>();
                     for (Doctors doctor : doctorsList) {
-                        if (doctor.getFullName().toLowerCase().contains(searchString)) {
+                        if (doctor.getGender().toLowerCase().equals(searchString)) {
                             filteredList.add(doctor);
                         }
                     }
                     tempDoctorsList = filteredList;
                     if (tempDoctorsList.size() == 0) {
-                      //  IS_USER_NOT_FOUND_VISIBLE = true;
+                        IS_USER_NOT_FOUND_VISIBLE = true;
                     } else {
-                      // IS_USER_NOT_FOUND_VISIBLE = false;
+                        IS_USER_NOT_FOUND_VISIBLE = false;
+                    }
+                    filterResults = new FilterResults();
+                    filterResults.values = tempDoctorsList;
+                    filterResults.count = tempDoctorsList.size();
+                } else {
+                    if (searchString.isEmpty()) {
+                        IS_USER_NOT_FOUND_VISIBLE = false;
+                        tempDoctorsList = doctorsList;
+                    } else {
+                        List<Doctors> filteredList = new ArrayList<>();
+                        for (Doctors doctor : doctorsList) {
+                            if (doctor.getFullName().toLowerCase().contains(searchString.toLowerCase())) {
+                                filteredList.add(doctor);
+                            }
+                        }
+                        tempDoctorsList = filteredList;
+                        if (tempDoctorsList.size() == 0) {
+                            IS_USER_NOT_FOUND_VISIBLE = true;
+                        } else {
+                            IS_USER_NOT_FOUND_VISIBLE = false;
+                        }
                     }
                 }
+                // Log.v("Result", "" + tempDoctorsList.size());
                 filterResults = new FilterResults();
                 filterResults.values = tempDoctorsList;
-                return null;
+                filterResults.count = tempDoctorsList.size();
+                return filterResults;
             }
 
             @Override
@@ -111,7 +135,6 @@ public class DoctorsAdapter extends RecyclerView.Adapter<DoctorsAdapter.DoctorsV
                 notifyDataSetChanged();
             }
         };
-        return filter;
     }
 
 

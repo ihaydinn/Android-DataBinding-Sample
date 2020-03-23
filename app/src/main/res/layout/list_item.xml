@@ -5,7 +5,7 @@
     <data>
         <variable
             name="doctors"
-            type="com.ismailhakkiaydin.doctorsapi.model.Doctors" />
+            type="com.ismailhakkiaydin.doctorsapi.network.dto.Doctors" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

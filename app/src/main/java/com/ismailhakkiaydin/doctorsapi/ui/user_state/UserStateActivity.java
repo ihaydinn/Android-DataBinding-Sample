@@ -1,4 +1,4 @@
-package com.ismailhakkiaydin.doctorsapi.activity;
+package com.ismailhakkiaydin.doctorsapi.ui.user_state;
 
 
 import android.os.Bundle;
@@ -8,7 +8,7 @@ import androidx.databinding.DataBindingUtil;
 
 import com.ismailhakkiaydin.doctorsapi.R;
 import com.ismailhakkiaydin.doctorsapi.databinding.ActivityUserStateBinding;
-import com.ismailhakkiaydin.doctorsapi.model.Doctors;
+import com.ismailhakkiaydin.doctorsapi.network.dto.Doctors;
 
 
 public class UserStateActivity extends AppCompatActivity {
